@@ -1,0 +1,238 @@
+/* Wrapper for login content */
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main content styling */
+.content {
+    padding: 7rem 0;
+}
+
+/* Width adjustment for large screens */
+.content .contents, 
+.content .bg {
+    width: 50%;
+}
+
+@media (max-width: 1199.98px) {
+    .content .contents, 
+    .content .bg {
+        width: 100%;
+    }
+}
+
+/* Form group styling */
+.content .contents .form-group, 
+.content .bg .form-group {
+    overflow: hidden;
+    margin-bottom: 0;
+    padding: 15px 15px;
+    border-bottom: none;
+    position: relative;
+    background: #edf2f5;
+    border-bottom: 1px solid #e6edf1;
+}
+
+.content .contents .form-group label, 
+.content .bg .form-group label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s all ease;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 0;
+    color: #b3b3b3;
+}
+
+.content .contents .form-group input, 
+.content .bg .form-group input {
+    background: transparent;
+}
+
+/* Rounded corners for first and last form groups */
+.content .contents .form-group.first, 
+.content .bg .form-group.first {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.content .contents .form-group.last, 
+.content .bg .form-group.last {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+/* Form control styling */
+.content .contents .form-control, 
+.content .bg .form-control {
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    border-radius: 0;
+}
+
+.content .contents .form-control:focus, 
+.content .bg .form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Background image styling */
+.content .bg {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Container layout */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Flexbox utilities */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-4 {
+    flex: 0 0 35%;
+    max-width: 35%;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.col-md-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+/* Additional layout utilities */
+.d-flex {
+    display: flex !important;
+}
+
+.mb-5 {
+    margin-bottom: 3rem !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.ml-auto {
+    margin-left: auto !important;
+}
+
+.mainContainer {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .titleContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 64px;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .resultContainer,
+  .historyItem {
+    flex-direction: row;
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .historyContainer {
+    flex-direction: column;
+    display: flex;
+    height: 200px;
+    align-items: center;
+    flex-grow: 5;
+    justify-content: flex-start;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+  }
+  
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .inputContainer > .errorLabel {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .inputBox {
+    height: 48px;
+    width: 400px;
+    font-size: large;
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding-left: 8px;
+  }
+
+  input[type='button'] {
+    border: none;
+    background: #0e00ef;
+    color: white;
+    padding: 12px 24px;
+    margin: 8px;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
