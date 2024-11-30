@@ -1,0 +1,6 @@
+Frontend: ngrok http --url=romantic-intimate-emu.ngrok-free.app 3000
+Backend:
+	lt --subdomain yaraproducts --port 5000
+	lt --subdomain yaraorder --port 5001
+	lt --subdomain yarausers --port 5002
+	lt --subdomain yaraanalysis --port 5003

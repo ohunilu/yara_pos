@@ -18,12 +18,14 @@ import {
     HStack,
     Box,
   } from '@chakra-ui/react';
+  import { useNavigate } from 'react-router-dom';
   import { DeleteIcon, RepeatIcon, CloseIcon } from '@chakra-ui/icons';
   import { useState, useEffect } from 'react';
   import yara from "../img/logo.png";
   
   function Pos() {
 
+    const navigate = useNavigate();
     const [items, setItems] = useState([
         { id: 10002, description: 'Veguit Bread', quantity: 2, price: 1500, vat: 0, amount: 1500 },
         // Add more items here...
@@ -61,7 +63,7 @@ import {
     return (
 
     <Grid templateColumns="repeat(6,1fr)" bg="blue.900">
-    <GridItem as="main" colSpan={{ base: 6, lg: 4, xl: 4 }} bg="white" minHeight={{ lg: '100vh' }} p="20px">
+    <GridItem as="main" colSpan={{ base: 6, lg: 4, xl: 4 }} bg="gray.50" minHeight={{ lg: '100vh' }} p="20px">
       <Flex as="nav" p="10px" alignItems="center">
         <Flex mb={3}>
           <Input
@@ -76,8 +78,9 @@ import {
         <Spacer />
         <Flex mb={4}>
           <HStack spacing="15px">
-            <Text>Hello Idris</Text>
-            <Button colorScheme="blue">Logout</Button>
+            <Text>Hello Cashier</Text>
+            <Button colorScheme="blue" onClick={() => {
+      navigate('/');}}>Logout</Button>
           </HStack>
         </Flex>
       </Flex>
