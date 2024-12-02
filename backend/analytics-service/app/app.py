@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import sqlite3
 import pandas as pd
+import os
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -67,17 +68,6 @@ class AnalyticsService:
         result = self.cursor.fetchone()
         return result[0] if result and result[0] else 0.0
 
-    def get_inventory_turnover(self):
-        query = """
-            SELECT 
-                strftime('%Y-%m', sl.purchase_date) as month,
-                SUM(sl.quantity_sold) / SUM(sl.quantity_purchased) as turnover
-            FROM stock_levels sl
-            GROUP BY month
-        """
-        df = pd.read_sql_query(query, self.conn)
-        return df.to_dict('records')
-
     def get_sales_per_user(self):
         query = """
             SELECT 
@@ -93,11 +83,11 @@ class AnalyticsService:
     def get_top_selling_products(self):
         query = """
             SELECT 
-                p.product_name, 
+                p.product_decrip, 
                 SUM(od.quantity) as quantity_sold
             FROM order_details od
             JOIN products p ON od.product_id = p.product_id
-            GROUP BY p.product_name
+            GROUP BY p.product_decrip
             ORDER BY quantity_sold DESC
             LIMIT 10
         """
@@ -119,7 +109,8 @@ class AnalyticsService:
 
 
 # Instantiate the analytics service with the database
-analytics_service = AnalyticsService("/app/Database/ecommerce.db")
+basedir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+analytics_service = AnalyticsService("../../yara.db")
 
 # API endpoints
 @app.get("/analytics")
@@ -128,7 +119,6 @@ def get_analytics():
         total_revenue = analytics_service.get_total_revenue()
         gross_profit = analytics_service.get_gross_profit()
         average_order_value = analytics_service.get_average_order_value()
-        inventory_turnover = analytics_service.get_inventory_turnover()
         sales_per_user = analytics_service.get_sales_per_user()
         top_selling_products = analytics_service.get_top_selling_products()
         product_category_sales = analytics_service.get_product_category_sales()
@@ -138,8 +128,7 @@ def get_analytics():
             "totalRevenue": total_revenue,
             "grossProfit": gross_profit,
             "averageOrderValue": average_order_value,
-            "inventoryTurnover": inventory_turnover,
-            "salesPerUser": sales_per_user,
+             "salesPerUser": sales_per_user,
             "topSellingProducts": top_selling_products,
             "productCategorySales": product_category_sales,
         }
